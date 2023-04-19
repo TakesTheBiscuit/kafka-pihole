@@ -1,0 +1,15 @@
+{
+  "name": "pimonitor",
+  "version": "1.0.0",
+  "description": "",
+  "main": "pi-to-kafka.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "kafkajs": "^2.2.4",
+    "tail": "^2.2.6"
+  }
+}

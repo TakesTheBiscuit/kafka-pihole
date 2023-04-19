@@ -1,0 +1,5 @@
+etc-pihole/
+etc-dnsmasq.d/
+pimonitor/node_modules
+var-log/
+.env
