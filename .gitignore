@@ -4,3 +4,4 @@ pimonitor/node_modules
 var-log/
 .env
 api/node_modules/
+.DS_Store
