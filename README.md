@@ -1,6 +1,6 @@
 # Pihole protective dns
 
-Protect your network using pihole and view the blocks in a ui.
+Protect your network using pihole and view the blocks in a ui - in realtime!
 
 This project contains:
 - pihole
