@@ -1,13 +1,13 @@
 import "./App.css";
 import React, { useState , useEffect} from "react";
-import useWebSocket from "react-use-websocket";
 
 function App() {
   const [rows, setRows] = useState([]);
   const [wsClient, setWsClient] = useState([]);
 
+
   useEffect(()=>{
-    const ws = new WebSocket("ws://localhost:8080");
+    const ws = new WebSocket("ws://localhost:8888");
     setWsClient(ws);
 
     ws.addEventListener("open", () =>{
@@ -16,8 +16,10 @@ function App() {
     });
      
     ws.addEventListener('message', function (event) {
-        console.log(event.data);
-        setRows(JSON.parse(event.data));
+        console.log('ws event', event.data);
+        const newlyObserved = JSON.parse(event.data);
+        setRows((prevState) => [...prevState, newlyObserved]);
+
     });
   }, []);
   
@@ -31,6 +33,7 @@ function App() {
           <thead>
             <tr>
               <th>#</th>
+              <th>When</th>
               <th>domain</th>
               <th>type</th>
             </tr>
@@ -38,8 +41,9 @@ function App() {
           <>
             {rows.map((row, index) => {
               return (
-                <tr>
+                <tr key={row.domain+row.type+row.dateTimeNow}>
                   <td>{index}</td>
+                  <td>{row.dateTimeNow}</td>
                   <td>{row.domain}</td>
                   <td>{row.type}</td>
                 </tr>
@@ -51,13 +55,7 @@ function App() {
 
       <div>
 
-        {/* <button
-          onClick={handleClickSendMessage}
-          disabled={readyState !== ReadyState.OPEN}
-        >
-          Click Me to send 'Hello'
-        </button> */}
-        <span>The WebSocket is currently ?</span>
+        <span>The WebSocket should be listening, try hitting a blocked domain via dig or in another window and watching the table here.</span>
         
       </div>
     </>
