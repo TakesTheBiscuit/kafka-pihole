@@ -130,8 +130,8 @@ sequenceDiagram
 ## In pictures
 ### Terminals
 
-![](https://github.com/TakesTheBiscuit/kafka-pihole/terminals.png)
+![](https://github.com/TakesTheBiscuit/kafka-pihole/blob/main/terminals.png)
 
 ### In action
 
-![](https://github.com/TakesTheBiscuit/kafka-pihole/pihole-works.gif)
+![](https://github.com/TakesTheBiscuit/kafka-pihole/blob/main/pihole-works.gif)
