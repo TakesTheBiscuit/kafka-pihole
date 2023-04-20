@@ -127,3 +127,11 @@ sequenceDiagram
     Note right of ui: View the <br/>blocked domains!
 ```
     
+## In pictures
+### Terminals
+
+![](https://github.com/TakesTheBiscuit/kafka-pihole/terminals.png)
+
+### In action
+
+![](https://github.com/TakesTheBiscuit/kafka-pihole/pihole-works.gif)
