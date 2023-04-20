@@ -20,6 +20,8 @@ This project contains:
 - The REACT ui is started see `/ui` and visited at `http://localhost` 
 - Hitting a domain defined as 'blocked' in pihole (see pihole admin) should result in seeing that domain within a second or two in the ui thanks to the websocket
 
+See 'diagram' for more info.
+
 ## Running things
 
 ### first terminal
@@ -105,3 +107,23 @@ The UI is a react app which connects to websocket and streams the blocked domain
 - `npm i`
 - `npm start`
 
+## Diagram
+```mermaid
+sequenceDiagram
+    participant pihole
+    participant pi-to-kafka
+    loop streaming
+        pihole->>pi-to-kafka: domain, type, time
+    end
+    pi-to-kafka->>kafka: bad.com message
+    loop streaming
+        kafka->>ksqldb: domain, type, time
+    end
+    node socket->>ksqldb: push query & emit
+    ksqldb->>ksqldb: watch and query
+    ksqldb->>node socket: domain, type, time
+    node socket-->>ui: [ws] domain, type, time
+    Note left of ui: If a client is subbed
+    Note right of ui: View the <br/>blocked domains!
+```
+    
